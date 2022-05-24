@@ -18,8 +18,6 @@ function usePozyx() {
       window.ENV.POZYX_CLIENT_ID
     );
 
-    console.log("Connecting with", window.ENV.POZYX_ENDPOINT, window.ENV.POZYX_CLIENT_ID);
-
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
@@ -28,7 +26,7 @@ function usePozyx() {
     client.connect({
       onSuccess: onConnect,
       userName: window.ENV.POZYX_CLIENT_ID,
-      password: window.ENV.POZYX_CLIENT_ID,
+      password: window.ENV.POZYX_PASSWORD,
       useSSL: true,
     });
 
@@ -47,7 +45,7 @@ function usePozyx() {
 
     // called when a message arrives
     function onMessageArrived(message: any) {
-      console.log("onMessageArrived:" + message.payloadString);
+      // console.log("onMessageArrived:" + message.payloadString);
       setPozState(JSON.parse(message.payloadString));
     }
 

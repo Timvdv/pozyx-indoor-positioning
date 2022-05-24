@@ -9,6 +9,7 @@ type personTrackerProps = {
 
 const defaultBallSize = 50;
 const maxBallSize = 500;
+const tileWidth = 10;
 
 const createBall: () => IBall = () => ({
   x: 0,
@@ -35,9 +36,11 @@ export const PersonTracker: React.FC<personTrackerProps> = (props: personTracker
 
   const draw = (p5: p5Types) => {
     let yellow = p5.color(255, 204, 0);
-    let yellowOpacity = p5.color(255, 204, 0, 100);
 
     p5.background("gray");
+
+
+    const amountOftiles = canvasWidth / tileWidth;
 
     posState.forEach((position: IPozyxData) => {
       if(!position.data) {
@@ -54,18 +57,7 @@ export const PersonTracker: React.FC<personTrackerProps> = (props: personTracker
     });
 
     balls.forEach( (ball) => {
-      const centerPosX = canvasWidth / 2 + ball.x / 10;
-      const centerPosY = canvasHeight / 2 + ball.y / 10;
-
       p5.noStroke();
-      p5.fill(yellowOpacity);
-      p5.ellipse(centerPosX, centerPosY, ball.width, ball.height);
-      p5.fill(yellowOpacity);
-      p5.ellipse(ball.x, ball.y, ball.width / 2, ball.height / 2);
-      p5.fill(yellowOpacity);
-      p5.ellipse(ball.x, ball.y, ball.width / 3, ball.height / 3);
-      p5.fill(yellowOpacity);
-      p5.ellipse(ball.x, ball.y, ball.width / 5, ball.height / 5);
       p5.fill(yellow);
       p5.ellipse(ball.x, ball.y, defaultBallSize, defaultBallSize);
 

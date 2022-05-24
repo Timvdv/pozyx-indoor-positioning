@@ -8,3 +8,9 @@ Run the following command to start the demo:
 yarn dev
 ```
 
+Add the following environment file with the correct props:
+```
+POZYX_ENDPOINT=XXX
+POZYX_CLIENT_ID=XXX
+POZYX_PASSWORD=XXX
+```

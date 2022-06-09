@@ -1,5 +1,5 @@
 import { ClientOnly, useHydrated } from "remix-utils";
-import { PersonTracker } from "~/components/personTracker";
+import { ConceptNavigation } from "~/components/conceptNavigation";
 import usePozyx from "~/hooks/usePozyx";
 
 export default function Index() {
@@ -10,7 +10,7 @@ export default function Index() {
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       {hydrated && (
         <ClientOnly fallback={<p>Loading...</p>}>
-          {() => <PersonTracker posState={posState} />}
+          {() => <ConceptNavigation posState={posState} />}
         </ClientOnly>
       )}
     </div>
